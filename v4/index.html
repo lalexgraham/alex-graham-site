@@ -71,7 +71,7 @@
 
   /* HERO */
   .hero{padding:calc(var(--nav-h) + 40px) 0 72px}
-  .hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:start}
+  .hero-grid{display:block;max-width:1240px}
   .id-row{display:flex;align-items:center;gap:18px;margin-bottom:28px}
   .portrait{width:124px;height:124px;border-radius:50%;object-fit:cover;border:2px solid var(--ink);display:block;box-shadow:7px 7px 0 var(--orange);transition:transform .3s}
   .portrait:hover{transform:rotate(-5deg)}
@@ -92,13 +92,6 @@
   .email-line a{font-weight:700;border-bottom:1px solid var(--ink);text-decoration:none}
   .email-line a:hover{color:var(--orange);border-color:var(--orange)}
 
-  /* exploded drawing */
-  .drawing{border:1px solid var(--ink);position:sticky;top:calc(var(--nav-h) + 24px);padding:16px 16px 12px;background:var(--cream)}
-  .drawing svg{display:block;width:100%;height:auto;overflow:visible}
-  .drawing .cap{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--ink);margin-top:10px;padding-top:10px;font-size:12px;text-transform:uppercase}
-  .drawing .cap output{font-weight:700;color:var(--orange)}
-  .layer{transform:translateY(calc(var(--p,0) * var(--d) * 1px));transition:transform .12s linear}
-  .guide{opacity:calc(var(--p,0))}
 
   /* PRACTICE */
   .practice{padding:24px 0 104px}
@@ -113,8 +106,7 @@
   .tri p{font-size:16px}
 
   /* TABLE FRAME (shared) */
-  .tri,.chips,.steps,.proofs,.case,.now,.drawing,.avail,.included{border-radius:var(--r);overflow:hidden}
-  .drawing{overflow:visible}
+  .tri,.chips,.steps,.proofs,.case,.now,.avail,.included{border-radius:var(--r);overflow:hidden}
   .btn{border-radius:999px}
   .nav .cta{border-radius:999px}
   .blockquote-x{}
@@ -193,7 +185,6 @@
 
   @media (max-width:960px){
     .hero-grid,.why-grid,.case-grid,.now{grid-template-columns:1fr}
-    .drawing{position:static;order:-1}
     .tri,.steps,.chips{grid-template-columns:1fr}
     .step{border-right:0;border-bottom:1px solid var(--ink)}
     .step:last-child{border-bottom:0}
@@ -274,37 +265,6 @@
           <p class="email-line">Or email me: <a href="#contact" data-mail-rev="moc.kooltuo@hcet.maharg.xela" data-mail-text="1">email</a></p>
         </div>
       </div>
-
-      <!-- decorative: pulls apart as you scroll, a nod to an exploded assembly drawing -->
-      <figure class="drawing" id="drawing" style="margin:0" aria-hidden="true">
-        <p class="fig">FIG. 00 — General arrangement</p>
-        <svg viewBox="0 0 300 330" fill="none" stroke="#141414" stroke-width="1.2" stroke-linejoin="round">
-          <g class="guide" stroke-dasharray="3 4" stroke-width="1">
-            <path d="M30 258V70M270 258V70M150 318V130"/>
-          </g>
-          <!-- base plate -->
-          <g class="layer" style="--d:0">
-            <path d="M30 238L150 298V310L30 250Z" fill="#141414" stroke="none" opacity=".85"/>
-            <path d="M270 238L150 298V310L270 250Z" fill="#141414" stroke="none" opacity=".55"/>
-            <path d="M150 178L270 238L150 298L30 238Z" fill="#FBEBD8"/>
-            <path d="M150 198L240 238L150 278L60 238Z" stroke-dasharray="3 4"/>
-          </g>
-          <!-- middle: framework -->
-          <g class="layer" style="--d:-62">
-            <path d="M150 120L270 180L150 240L30 180Z" fill="#EC5C16" fill-opacity=".9"/>
-            <path d="M90 150L210 210M150 120L150 240M210 150L90 210M30 180L270 180" stroke-dasharray="3 4" stroke-width="1"/>
-            <circle cx="150" cy="180" r="12" fill="#FBEBD8"/>
-          </g>
-          <!-- top: tank -->
-          <g class="layer" style="--d:-130">
-            <path d="M110 90V40M190 90V40" />
-            <ellipse cx="150" cy="90" rx="40" ry="20" fill="#FBEBD8"/>
-            <ellipse cx="150" cy="40" rx="40" ry="20" fill="#EC5C16"/>
-            <path d="M130 40v8M150 40v8M170 40v8" stroke-width="1"/>
-          </g>
-        </svg>
-        <p class="cap"><span>Stage <output id="stageOut">00</output> / 03</span><span>Scroll to explode</span></p>
-      </figure>
     </div>
   </section>
 
@@ -574,8 +534,6 @@
 (function () {
   var nav = document.getElementById('nav');
   var bar = document.getElementById('progress');
-  var drawing = document.getElementById('drawing');
-  var stageOut = document.getElementById('stageOut');
   var links = document.querySelectorAll('.nav ul a');
   var map = {};
   links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
@@ -589,10 +547,6 @@
     bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
     nav.classList.toggle('scrolled', y > 8);
 
-    // Exploded drawing: pull the layers apart over the first ~700px of scroll
-    var p = reduce ? 0 : Math.max(0, Math.min(1, y / 700));
-    drawing.style.setProperty('--p', p.toFixed(3));
-    stageOut.textContent = '0' + Math.min(3, Math.round(p * 3));
 
     // Nav highlight
     var probe = y + window.innerHeight * 0.35;
