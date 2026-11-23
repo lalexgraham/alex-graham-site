@@ -32,7 +32,7 @@ var SITE = {
   var bar=document.createElement("div");
   bar.className="consent"; bar.setAttribute("role","region"); bar.setAttribute("aria-label","Analytics cookies");
   var root=location.pathname.indexOf("/privacy/")>-1||location.pathname.indexOf("/case-study/")>-1||location.pathname.indexOf("/business/")>-1?"../":"";
-  bar.innerHTML='<p>I\u2019d like to use Google Analytics cookies to see which pages are useful. Nothing loads unless you accept. <a href="'+root+'privacy/">Privacy</a></p><div class="btn-row"><button type="button" class="btn btn-primary" data-yes>Accept</button><button type="button" class="btn btn-secondary" data-no>Decline</button></div>';
+  bar.innerHTML='<p><strong>This site uses cookies (analytics).</strong>Is that OK? <a href="'+root+'privacy/">Privacy</a></p><div class="btn-row"><button type="button" class="btn" data-yes>Accept</button><button type="button" class="btn btn-secondary" data-no>Decline</button></div>';
   document.body.appendChild(bar);
   bar.querySelector("[data-yes]").addEventListener("click",function(){ save("yes"); bar.remove(); load(); });
   bar.querySelector("[data-no]").addEventListener("click",function(){ save("no"); bar.remove(); });
