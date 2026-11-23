@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" width="520" height="420" role="img" aria-label="Two people standing by a signpost at the end of a winding, looping path">
+<path d="M30 300 C10 170 120 60 270 56 C420 52 504 160 478 290 C456 390 300 410 180 394 C96 382 44 350 30 300Z" fill="#C9ECDD"/>
+<circle cx="440" cy="118" r="34" fill="#FFD35C"/>
+<g fill="none" stroke="#0F3B5F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M20 372 H500"/>
+<path d="M30 340 C110 340 150 300 126 250 C102 200 190 168 212 220 C234 272 150 300 190 344 C222 378 300 378 336 366" stroke-dasharray="1 0"/>
+<path d="M470 372 V150"/>
+<path d="M470 164 H426 L412 178 L426 192 H470Z" fill="#FFFFFF"/>
+<path d="M470 204 H500 L512 218 L500 232 H470Z" fill="#FFFFFF"/>
+<circle cx="344" cy="262" r="15"/>
+<path d="M334 258 C336 246 354 244 358 256"/>
+<path d="M344 278 V326 M344 326 L332 372 M344 326 L356 372"/>
+<path d="M344 292 L324 308 M344 292 L366 304"/>
+<path d="M326 330 C316 330 314 366 326 366 H340 V330Z" fill="#FFD35C"/>
+<circle cx="404" cy="268" r="15"/>
+<path d="M396 266 Q404 274 412 266"/>
+<path d="M404 284 V330 M404 330 L394 372 M404 330 L416 372"/>
+<path d="M404 298 L426 270 M404 298 L384 312"/>
+</g>
+<circle cx="190" cy="344" r="5" fill="#FFD35C" stroke="#0F3B5F" stroke-width="2.5"/>
+<circle cx="126" cy="250" r="5" fill="#FFD35C" stroke="#0F3B5F" stroke-width="2.5"/>
+<circle cx="212" cy="220" r="5" fill="#FFD35C" stroke="#0F3B5F" stroke-width="2.5"/>
+</svg>

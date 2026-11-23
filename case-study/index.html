@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Timesheets on Microsoft 365 for a Birmingham charity | Alex Graham</title>
+<meta name="description" content="How I built a timesheet system for a Birmingham children's charity on Excel, SharePoint Lists and Power Apps, and where AI helped.">
+<meta name="theme-color" content="#EAF7F1">
+<meta property="og:title" content="Timesheets on Microsoft 365 for a Birmingham charity | Alex Graham">
+<meta property="og:description" content="How I built a timesheet system for a Birmingham children's charity on Excel, SharePoint Lists and Power Apps, and where AI helped.">
+<meta property="og:type" content="website">
+<link rel="preload" href="../fonts/plus-jakarta-sans-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","name":"Alex Graham","url":"https://www.alex-graham.cc/","jobTitle":"AI adviser for charities and not-for-profits","address":{"@type":"PostalAddress","addressLocality":"Sutton Coldfield","addressCountry":"GB"}},{"@type":"ProfessionalService","name":"Alex Graham","url":"https://www.alex-graham.cc/","areaServed":"GB","address":{"@type":"PostalAddress","addressLocality":"Sutton Coldfield","addressCountry":"GB"}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site"><div class="wrap">
+<a class="brand" href="../"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="40" viewBox="0 0 44 40" fill="none" stroke="#0F3B5F" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 30 C14 30 18 20 12 14 C8 9 18 5 20 12 C22 20 14 28 26 31 C34 33 38 24 40 10"/><circle cx="40" cy="8" r="3" fill="#FFD35C"/></svg>
+<span>Alex Graham</span></a>
+<nav aria-label="Main"><ul>
+<li><a href="../#how">How I help</a></li>
+<li><a href="../#case-study">Case study</a></li>
+<li><a href="../#about">About</a></li>
+</ul></nav>
+<a class="btn btn-primary" data-cta href="../#contact"><span class="long">Book a free 30 minute call</span><span class="short">Book a call</span></a>
+</div></header>
+<main id="main"><article class="page">
+<p class="kicker">Case study</p>
+<h1>Timesheets for <span data-charity>a Birmingham children's charity</span></h1>
+<p class="lead" style="margin-top:20px"><strong>Tech used:</strong> Microsoft Excel, SharePoint Lists, Power Apps</p>
+<p style="margin-top:16px">A small charity in Birmingham needed a straightforward way for staff to log the hours they worked, and for managers to check those hours against what people were contracted to do. Getting there took two different attempts, the second one closer to something the charity could run day to day without extra cost or a new system to learn.</p>
+<h2>The brief</h2>
+<p>A Birmingham-based charity working with children has fewer than 25 employees and needed a reliable way to record time worked for all employees. Recording hours worked matters here for a real reason: UK working time rules require it, and several employees have contracted hours that change through the year, term-time hours differ from school-holiday hours for some roles. Whatever system tracked this had to handle that change automatically rather than relying on someone updating a spreadsheet every September.</p>
+<p>The brief also came with practical constraints. No new system for staff to log into. No extra licence cost or systems to maintain. And longer term, something the charity's own team could manage themselves rather than needing outside help indefinitely. They already had a Microsoft 365 subscription, so the starting point was how to use what was already there.</p>
+<h2>What it needed to do</h2>
+<p>Stripped of any particular tool, the requirement came down to three things.</p>
+<p><strong>A data model</strong> to hold employee details and their default contracted hours, any exceptions to those hours through the year, and the actual time logged each day.</p>
+<p><strong>Secure, simple data entry</strong>, so each employee could log their own hours quickly, without training, and without being able to see anyone else's.</p>
+<p><strong>A reporting output for managers</strong>, comparing hours worked to hours contracted and flagging anything significantly over or under.</p>
+<p>Those three requirements didn't change over the course of the project. Which tools met them did, twice.</p>
+<h2>The first attempt: selecting from the Microsoft universe</h2>
+<p>There are just so many Microsoft products now. For any organisation that doesn't have Microsoft expertise on hand and yet uses Microsoft day to day, it's really intimidating to know what to use and still be in your comfort zone. With that comfort and safety in mind I went with the most familiar tool: Excel. One workbook per employee, kept in their own SharePoint folder, with the calculation cells locked so nobody could overwrite a formula by accident. No macros, nothing extra to install, privacy handled through SharePoint's own folder permissions. On paper it satisfied all three requirements.</p>
+<p>The issues showed up at the reporting stage. With every employee's hours locked away in a separate file, and no macros allowed by design, pulling everyone's totals into one view for a manager meant copying figures across by hand. That was manageable for a small trial with one or two test accounts. It wasn't something a manager could be expected to repeat accurately every single week. So I dropped this approach quite early on.</p>
+<h2>What I built: enter Power Apps</h2>
+<p>The three requirements stayed fixed, so the second attempt kept them and changed the approach underneath.</p>
+<p>For the data model, employee details, contracted hours, and time entries moved into three SharePoint Lists, a structured way of storing data that works a lot like a shared spreadsheet, but without the risk of multiple people editing the same file, and with a record kept of every change made.</p>
+<p>For secure entry, I built a simple form using Power Apps, a tool for building basic apps on top of SharePoint data without needing to write code. Each employee opens the form, logs their hours, and sees only their own entries. There's no file to find and no formula for anyone to accidentally break.</p>
+<p>For reporting, Excel came back in but connected live to the three SharePoint Lists this time rather than filled in by hand. One workbook now pulls current data automatically and works out hours worked against hours contracted, flagging anything that needs a manager's attention.</p>
+<p>Connecting Excel and SharePoint so the report updates itself reliably took some troubleshooting along the way. The link between the two doesn't always behave exactly as expected, and a few refresh issues needed tracking down before the numbers could be trusted.</p>
+<h2>Current status</h2>
+<p>The system is currently in trial, being used to check the whole flow works end to end before wider rollout. If that goes well, the next steps are adding proper security around who can see what within the SharePoint Lists, and finding a way for the reporting view to update itself automatically as new staff and weeks are added, rather than a manager adding rows by hand.</p>
+<p>Because it's built on tools the charity already had, the aim is for their own team to get comfortable running it fairly quickly, without needing outside help for the day to day. If this approach works well here, there are likely other small internal processes at the charity that could use the same pattern.</p>
+<h2>How this was built</h2>
+<div class="how" style="margin-top:8px">
+<h4 style="margin-top:0">Building it <span class="tag">Claude</span></h4>
+<p>I used Claude, Anthropic's AI assistant, hands-on for a lot of the mechanical work here, building out the Power Apps screens, wiring up the SharePoint Lists and Excel connections, and tracking down the refresh issues. I set the requirements, reviewed every change, and made the calls on architecture and what actually shipped. Knowing what to ask for and how to check the output is increasingly part of how I deliver projects like this, including where I'm familiar with a platform but not certain which of its tools is the right one.</p>
+<h4>Reporting and analysis <span class="tag">Copilot, not live yet</span></h4>
+<p>The charity and I are now looking at how to use Microsoft Copilot to help analyse the timesheet data and produce the reports. That is not live yet.</p>
+</div>
+<h2>Where I can help</h2>
+<p>If you're managing a process like this, with spreadsheets, but getting bogged down in complexity, that's usually the kind of problem worth talking through.</p>
+<p class="cta-after"><a class="btn btn-primary" data-cta href="../#contact">Book a free 30 minute call</a></p>
+</article></main>
+<footer class="site"><div class="wrap cols">
+<div><strong>Alex Graham</strong><br><small>Sutton Coldfield, Birmingham. Working with charities across the UK, remotely.</small><br><small><a data-email href="mailto:">email</a></small></div>
+<ul class="mini"><li><a href="../privacy/">Privacy</a></li><li><a href="https://www.linkedin.com/in/alex-graham-64850314/" rel="noopener">LinkedIn</a></li><li><a href="../#about">Hiring? See my engineering background</a></li></ul>
+</div></footer>
+<script src="../site.js"></script>
+</body></html>
